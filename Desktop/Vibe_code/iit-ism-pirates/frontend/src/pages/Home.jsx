@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PLACES, ZONES, isPlaceOpen } from '../data/places';
 import { NOTICES } from '../data/notices';
+import { CAMPUS_LIFE_STORIES, ACADEMICS_INFO, RESEARCH_DISCOVERIES } from '../data/campusLifeAndResearch';
 import { useSound } from '../context/SoundContext';
 import { useChaos } from '../context/ChaosContext';
 import { useTreasure } from '../context/TreasureContext';
 import IsleMapSVG from '../components/IsleMapSVG';
 import confetti from 'canvas-confetti';
+
 
 export default function Home() {
   const { play } = useSound();
@@ -24,6 +27,8 @@ export default function Home() {
   const [showLogModal, setShowLogModal] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [viewMode, setViewMode] = useState('map'); // 'map' or 'list' for mobile toggle
+  const [activeStoryModal, setActiveStoryModal] = useState(null);
+  const [activeResearchModal, setActiveResearchModal] = useState(null);
 
   // Captain's Log (Discovered Landmarks)
   const [captainsLog, setCaptainsLog] = useState(() => {
@@ -479,6 +484,226 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ========================================================================= */}
+      {/* 1. CAMPUS LIFE SECTION (Matches Official IIT ISM Showcase) */}
+      {/* ========================================================================= */}
+      <section className="home-dashboard-section home-campus-life-section">
+        <div className="section-header-banner">
+          <div className="section-title-wrap">
+            <div className="section-title-with-line">
+              <h2 className="official-section-title">Campus Life</h2>
+              <div className="section-title-line"></div>
+            </div>
+            <p className="official-section-subtitle">Where creativity pulsates...</p>
+          </div>
+          <Link to="/clubs" className="official-more-btn" onClick={() => play('click')}>
+            More about campus life ➔
+          </Link>
+        </div>
+
+        <div className="campus-life-cards-grid">
+          {CAMPUS_LIFE_STORIES.map((story) => (
+            <div key={story.id} className="campus-life-card">
+              <div className="campus-life-img-box">
+                <img src={story.image} alt={story.title} className="campus-life-img" />
+                <span className="campus-life-badge">{story.badge}</span>
+              </div>
+              <div className="campus-life-content">
+                <p className="campus-life-desc">{story.description}</p>
+                <button
+                  className="official-read-more-btn"
+                  onClick={() => {
+                    play('click');
+                    setActiveStoryModal(story);
+                  }}
+                >
+                  Read More ➔
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 2. ACADEMICS SECTION (Matches Official IIT ISM 9-Decade Legacy Showcase) */}
+      {/* ========================================================================= */}
+      <section className="home-dashboard-section home-academics-section">
+        <div className="section-header-banner">
+          <div className="section-title-wrap">
+            <div className="section-title-with-line">
+              <h2 className="official-section-title">Academics</h2>
+              <div className="section-title-line"></div>
+            </div>
+            <p className="official-section-subtitle">A legacy built on more than nine decades of excellence and inventiveness</p>
+          </div>
+          <Link to="/departments" className="official-more-btn" onClick={() => play('click')}>
+            More about academics ➔
+          </Link>
+        </div>
+
+        <div className="academics-split-layout">
+          {/* Left Column: Student Arch Feature Portrait */}
+          <div className="academics-student-col">
+            <div className="student-arch-wrapper">
+              <img
+                src={ACADEMICS_INFO.studentImage}
+                alt="IIT (ISM) Scholar"
+                className="student-arch-img"
+              />
+              <div className="student-arch-overlay">
+                <span className="student-arch-badge">⚓ Nearly 100 Years of Academic Excellence</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: 3 Academic Program Cards */}
+          <div className="academics-programs-col">
+            {ACADEMICS_INFO.programs.map((prog) => (
+              <Link
+                key={prog.id}
+                to={prog.link}
+                className="academic-program-row-card"
+                onClick={() => play('click')}
+              >
+                <div className="program-row-img-box">
+                  <img src={prog.image} alt={prog.title} className="program-row-img" />
+                </div>
+                <div className="program-row-info">
+                  <div className="program-row-top">
+                    <h3 className="program-row-title">{prog.title}</h3>
+                    <span className="program-row-badge">{prog.badge}</span>
+                  </div>
+                  <p className="program-row-degrees">{prog.degrees}</p>
+                  <p className="program-row-desc">{prog.description}</p>
+                </div>
+                <span className="program-row-arrow">➔</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. RESEARCH SECTION (Matches Official IIT ISM Scientific Publications) */}
+      {/* ========================================================================= */}
+      <section className="home-dashboard-section home-research-section">
+        <div className="section-header-banner">
+          <div className="section-title-wrap">
+            <div className="section-title-with-line">
+              <h2 className="official-section-title">Research</h2>
+              <div className="section-title-line"></div>
+            </div>
+            <p className="official-section-subtitle">Fostering inventiveness, imagination, and curiosity for a lifetime.</p>
+          </div>
+          <Link to="/departments" className="official-more-btn" onClick={() => play('click')}>
+            More on research ➔
+          </Link>
+        </div>
+
+        <div className="research-discoveries-grid">
+          {RESEARCH_DISCOVERIES.map((disc) => (
+            <div
+              key={disc.id}
+              className="research-discovery-card"
+              onClick={() => {
+                play('click');
+                setActiveResearchModal(disc);
+              }}
+            >
+              <div className="research-card-img-box">
+                <img src={disc.image} alt={disc.title} className="research-card-img" />
+                <span className="research-card-category-badge">{disc.category}</span>
+              </div>
+              <div className="research-card-body">
+                <h3 className="research-card-title">{disc.title}</h3>
+                <p className="research-card-summary">{disc.summary}</p>
+                <div className="research-card-footer">
+                  <span className="research-lead-author">✍️ {disc.lead}</span>
+                  <span className="research-expand-link">Read Discovery ➔</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Campus Life Story Expanded Modal */}
+      {activeStoryModal && (
+        <div className="real-info-modal active" onClick={() => setActiveStoryModal(null)}>
+          <div className="real-info-content" onClick={e => e.stopPropagation()} style={{ maxWidth: '680px' }}>
+            <div className="real-info-header">
+              <h2>{activeStoryModal.badge}</h2>
+              <button className="modal-close-btn" onClick={() => setActiveStoryModal(null)}>✖</button>
+            </div>
+            <div style={{ textAlign: 'center', margin: '1rem 0' }}>
+              <img
+                src={activeStoryModal.image}
+                alt={activeStoryModal.title}
+                style={{ width: '100%', maxHeight: '320px', objectFit: 'cover', borderRadius: '12px', border: '2px solid var(--gold-border)' }}
+              />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold-glow)', fontSize: '1.4rem', marginBottom: '0.4rem' }}>
+              {activeStoryModal.title}
+            </h3>
+            <p style={{ color: 'var(--gold-parchment)', fontSize: '0.95rem', fontStyle: 'italic', marginBottom: '1rem' }}>
+              🏴‍☠️ {activeStoryModal.pirateSubtitle} • 📍 {activeStoryModal.date}
+            </p>
+            <p style={{ color: '#e0e6ed', lineHeight: 1.6, fontSize: '1.05rem' }}>
+              {activeStoryModal.description}
+            </p>
+            <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.8rem', justifyContent: 'flex-end' }}>
+              <Link to="/clubs" className="btn" onClick={() => setActiveStoryModal(null)}>
+                🏴‍☠️ Explore All Pirate Guilds &amp; Clubs
+              </Link>
+              <button className="btn btn-secondary" onClick={() => setActiveStoryModal(null)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Research Paper Expanded Modal */}
+      {activeResearchModal && (
+        <div className="real-info-modal active" onClick={() => setActiveResearchModal(null)}>
+          <div className="real-info-content" onClick={e => e.stopPropagation()} style={{ maxWidth: '780px' }}>
+            <div className="real-info-header">
+              <h2>🔬 {activeResearchModal.category}</h2>
+              <button className="modal-close-btn" onClick={() => setActiveResearchModal(null)}>✖</button>
+            </div>
+            <div style={{ textAlign: 'center', margin: '1rem 0' }}>
+              <img
+                src={activeResearchModal.image}
+                alt={activeResearchModal.title}
+                style={{ width: '100%', maxHeight: '360px', objectFit: 'contain', background: '#ffffff', borderRadius: '12px', border: '2px solid var(--gold-border)', padding: '6px' }}
+              />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold-glow)', fontSize: '1.5rem', marginBottom: '0.4rem' }}>
+              {activeResearchModal.title}
+            </h3>
+            <div style={{ background: 'rgba(0, 206, 201, 0.1)', padding: '0.8rem 1rem', borderRadius: '8px', borderLeft: '4px solid #00cec9', marginBottom: '1rem' }}>
+              <strong style={{ color: '#00cec9', display: 'block', fontSize: '0.92rem' }}>Principal Investigators:</strong>
+              <span style={{ color: '#fff', fontSize: '1rem' }}>{activeResearchModal.lead}</span>
+              <div style={{ fontSize: '0.85rem', color: '#a0aec0', marginTop: '4px' }}>
+                Published In / Field: <em>{activeResearchModal.journal}</em>
+              </div>
+            </div>
+            <p style={{ color: '#e0e6ed', lineHeight: 1.6, fontSize: '1.05rem' }}>
+              {activeResearchModal.summary}
+            </p>
+            <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.8rem', justifyContent: 'flex-end' }}>
+              <Link to="/departments" className="btn" onClick={() => setActiveResearchModal(null)}>
+                🏛️ Explore Research Guilds &amp; Labs
+              </Link>
+              <button className="btn btn-secondary" onClick={() => setActiveResearchModal(null)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Captain's Charting Log Modal */}
       {showLogModal && (
         <div className="real-info-modal active" onClick={() => setShowLogModal(false)}>
@@ -538,3 +763,4 @@ export default function Home() {
     </div>
   );
 }
+
