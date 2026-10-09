@@ -1136,6 +1136,10 @@ body.rum-spill-active {
 }
 
 .nav-abandon-crew-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
 @keyframes ship-rocking {
   0% { transform: translate(-50%, -50%) rotate(-6deg); }
   100% { transform: translate(-50%, -50%) rotate(6deg); }
