@@ -1134,8 +1134,12 @@ body.rum-spill-active {
   transition: all 0.2s;
   white-space: nowrap;
 }
-
 .nav-abandon-crew-btn:hover {
+  background: rgba(231, 76, 60, 0.4);
+  color: #ffffff;
+  border-color: #ff7675;
+}
+
 @keyframes ship-rocking {
   0% { transform: translate(-50%, -50%) rotate(-6deg); }
   100% { transform: translate(-50%, -50%) rotate(6deg); }
