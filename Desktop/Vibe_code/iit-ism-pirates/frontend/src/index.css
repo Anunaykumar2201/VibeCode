@@ -521,6 +521,265 @@ body.rum-spill-active {
 .footer-col h3 { color: var(--gold-glow); font-size: 1.4rem; margin-bottom: 0.8rem; }
 .footer-bottom { border-top: 1px solid rgba(212, 175, 55, 0.2); padding: 1.2rem; text-align: center; font-size: 0.85rem; color: #718096; }
 
+/* --- Login & Crew Registration (Auth) --- */
+.login-page-container { max-width: 620px; margin: 0 auto; }
+.auth-card {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-shaking {
+  animation: card-shake 0.6s ease-in-out;
+}
+
+@keyframes card-shake {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-8px) rotate(-1deg); }
+  30%, 60%, 90% { transform: translateX(8px) rotate(1deg); }
+}
+
+.auth-tab-bar {
+  display: flex;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-brown);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.auth-tab-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  color: #000;
+}
+
+.auth-tab-btn.active {
+  background: linear-gradient(180deg, var(--gold-glow), var(--gold-primary));
+  color: #000;
+  box-shadow: 0 2px 0 var(--brass), var(--shadow-gold);
+  font-weight: bold;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.password-input-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-row input {
+  width: 100%;
+  padding-right: 48px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.password-toggle-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.auth-form-extras {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.remember-me-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: #3b1e08;
+  font-weight: bold;
+}
+
+.remember-me-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold-primary);
+  cursor: pointer;
+}
+
+.forgot-pass-link {
+  font-size: 0.88rem;
+  color: var(--blood-red);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.forgot-pass-link:hover {
+  color: #c0392b;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  font-size: 1.35rem;
+  padding: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.pirate-error-msg {
+  background: rgba(192, 57, 43, 0.12);
+  border: 1px solid var(--crimson);
+  border-left: 5px solid var(--blood-red);
+  color: var(--blood-red);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  animation: slide-toast 0.3s ease;
+}
+
+.parrot-joke-bubble {
+  background: rgba(212, 175, 55, 0.18);
+  border: 2px dashed var(--gold-primary);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: #3b1e08;
+  margin-bottom: 1.2rem;
+  animation: slide-toast 0.3s ease;
+}
+
+.parrot-icon { font-size: 1.8rem; line-height: 1; }
+.parrot-text { font-size: 0.95rem; font-style: italic; }
+
+.auth-success-banner {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.auth-success-banner h3 {
+  color: var(--blood-red);
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.demo-disclaimer-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(139, 107, 62, 0.4);
+  color: #5a3814;
+  font-size: 0.85rem;
+}
+
+.demo-helper-box {
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.demo-fill-btn {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+}
+
+/* Nav User / Board Ship links */
+.board-ship-link {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+.nav-user-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-user-name {
+  color: var(--gold-glow) !important;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.nav-abandon-crew-btn {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid #e74c3c;
+  color: #ff7675;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-abandon-crew-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* Hostels Flagship Highlight */
+.hostel-card.my-flagship-card {
+  border: 3px solid var(--gold-glow);
+  box-shadow: 0 0 25px rgba(255, 192, 72, 0.5), 0 10px 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.user-flagship-tag {
+  background: var(--gold-primary);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px var(--gold-glow);
+}
+
 /* Responsive Mobile */
 @media (max-width: 768px) {
   .pirate-navbar { padding: 0.6rem 1.2rem; }
@@ -528,7 +787,10 @@ body.rum-spill-active {
   .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.4rem; padding-top: 0.8rem; border-top: 1px dashed rgba(212, 175, 55, 0.3); }
   .nav-links.nav-open { display: flex; }
   .nav-links li a { width: 100%; text-align: center; }
+  .nav-user-item { flex-direction: column; width: 100%; }
+  .nav-user-item a, .nav-user-item button { width: 100%; text-align: center; }
   .map-layout-grid { grid-template-columns: 1fr; }
   h1 { font-size: 2.2rem; }
   .container { padding: 1.5rem 1rem; }
 }
+

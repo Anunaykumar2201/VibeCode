@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { useSound } from '../context/SoundContext';
 import { useChaos } from '../context/ChaosContext';
 import { useTreasure } from '../context/TreasureContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar({ onOpenRealInfo }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isMuted, toggleMute } = useSound();
   const { addChaos } = useChaos();
   const { isUnlocked } = useTreasure();
+  const { user, logout } = useAuth();
 
   return (
     <>
@@ -49,6 +51,32 @@ export default function Navbar({ onOpenRealInfo }) {
           <li><NavLink to="/placements" className={({ isActive }) => isActive ? 'active' : ''} onClick={() => setMobileOpen(false)}>💎 Plunder</NavLink></li>
           {isUnlocked && (
             <li><NavLink to="/secret" className="unlocked-secret-link" onClick={() => setMobileOpen(false)}>🗝️ Secret</NavLink></li>
+          )}
+          
+          {/* Auth State: Board the Ship or Logged-in Captain Name */}
+          {!user ? (
+            <li>
+              <NavLink to="/login" className={({ isActive }) => isActive ? 'active board-ship-link' : 'board-ship-link'} onClick={() => setMobileOpen(false)}>
+                ⚓ Board the Ship
+              </NavLink>
+            </li>
+          ) : (
+            <li className="nav-user-item">
+              <NavLink to="/login" className="nav-user-name" onClick={() => setMobileOpen(false)} title="View Enlisted Profile">
+                ⚓ {user.name}
+              </NavLink>
+              <button
+                type="button"
+                className="nav-abandon-crew-btn"
+                onClick={() => {
+                  logout();
+                  setMobileOpen(false);
+                }}
+                title="Abandon the crew and sign out"
+              >
+                🚪 Abandon Crew
+              </button>
+            </li>
           )}
         </ul>
 
