@@ -3,11 +3,13 @@ import { HOSTELS } from '../data/hostels';
 import { useSound } from '../context/SoundContext';
 import { useChaos } from '../context/ChaosContext';
 import { useTreasure } from '../context/TreasureContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Hostels() {
   const { play } = useSound();
   const { addChaos, showToast } = useChaos();
   const { collectCoin, isCollected } = useTreasure();
+  const { user } = useAuth();
 
   const [fleet, setFleet] = useState(HOSTELS);
   const [raidLogs, setRaidLogs] = useState([
@@ -82,14 +84,23 @@ export default function Hostels() {
 
       {/* Hostels Grid Leaderboard */}
       <div className="hostels-grid">
-        {fleet.map((hostel, index) => (
-          <div key={hostel.id} className="hostel-card">
-            <div className="hostel-card-header">
-              <span className="hostel-rank-badge">#{index + 1}</span>
-              <span className="hostel-flag-icon">{hostel.flag}</span>
-            </div>
+        {fleet.map((hostel, index) => {
+          const isUserFlagship = user?.hostelId === hostel.id;
+          return (
+            <div key={hostel.id} className={`hostel-card ${isUserFlagship ? 'my-flagship-card' : ''}`}>
+              <div className="hostel-card-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <span className="hostel-rank-badge">#{index + 1}</span>
+                  {isUserFlagship && (
+                    <span className="user-flagship-tag" title="Enlisted Crew Flagship">
+                      ⭐ Your Flagship
+                    </span>
+                  )}
+                </div>
+                <span className="hostel-flag-icon">{hostel.flag}</span>
+              </div>
 
-            <h3 style={{ color: 'var(--gold-glow)', fontSize: '1.4rem' }}>{hostel.name}</h3>
+              <h3 style={{ color: 'var(--gold-glow)', fontSize: '1.4rem' }}>{hostel.name}</h3>
             <p style={{ color: 'var(--bg-parchment-dark)', fontSize: '0.88rem', margin: '4px 0' }}>
               <strong>Official:</strong> {hostel.realName} • Built: {hostel.built} • {hostel.floors} Decks
             </p>
@@ -115,7 +126,8 @@ export default function Hostels() {
               💣 Raid This Galleon (-500)
             </button>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Live Raid Activity Feed */}

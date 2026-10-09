@@ -89,7 +89,7 @@ export const ChaosProvider = ({ children }) => {
   };
 
   return (
-    <ChaosContext.Provider value={{ chaos, addChaos, resetChaos, showToast }}>
+    <ChaosContext.Provider value={{ chaos, addChaos, add: addChaos, resetChaos, showToast }}>
       {children}
 
       {/* Storm Rain Canvas when tier 3 */}
