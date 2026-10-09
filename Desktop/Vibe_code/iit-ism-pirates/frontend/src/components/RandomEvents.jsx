@@ -78,8 +78,8 @@ export default function RandomEvents() {
 
       {/* 2. Cannonball Hole Event */}
       {cannonHole && (
-        <div 
-          className="cannonball-hole" 
+        <div
+          className="cannonball-hole"
           style={{ left: cannonHole.x, top: cannonHole.y }}
           onClick={patchHole}
         >

@@ -101,31 +101,31 @@ export default function Hostels() {
               </div>
 
               <h3 style={{ color: 'var(--gold-glow)', fontSize: '1.4rem' }}>{hostel.name}</h3>
-            <p style={{ color: 'var(--bg-parchment-dark)', fontSize: '0.88rem', margin: '4px 0' }}>
-              <strong>Official:</strong> {hostel.realName} • Built: {hostel.built} • {hostel.floors} Decks
-            </p>
-            <p style={{ color: 'var(--bg-parchment-light)', fontSize: '0.92rem', fontStyle: 'italic' }}>
-              "{hostel.specialty}"
-            </p>
+              <p style={{ color: 'var(--bg-parchment-dark)', fontSize: '0.88rem', margin: '4px 0' }}>
+                <strong>Official:</strong> {hostel.realName} • Built: {hostel.built} • {hostel.floors} Decks
+              </p>
+              <p style={{ color: 'var(--bg-parchment-light)', fontSize: '0.92rem', fontStyle: 'italic' }}>
+                "{hostel.specialty}"
+              </p>
 
-            <div className="hostel-loot-bar-container">
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                <span className="loot-amount-text">💰 {hostel.loot.toLocaleString()} Doubloons</span>
-                <span style={{ fontSize: '0.9rem', color: '#ff7675' }}>💣 {hostel.cannons} Cannons</span>
+              <div className="hostel-loot-bar-container">
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                  <span className="loot-amount-text">💰 {hostel.loot.toLocaleString()} Doubloons</span>
+                  <span style={{ fontSize: '0.9rem', color: '#ff7675' }}>💣 {hostel.cannons} Cannons</span>
+                </div>
+                <div style={{ width: '100%', height: '10px', background: 'rgba(0,0,0,0.5)', borderRadius: '5px', overflow: 'hidden' }}>
+                  <div style={{ width: `${Math.min(100, (hostel.loot / 25000) * 100)}%`, height: '100%', background: 'linear-gradient(90deg, #f1c40f, #e67e22)' }} />
+                </div>
               </div>
-              <div style={{ width: '100%', height: '10px', background: 'rgba(0,0,0,0.5)', borderRadius: '5px', overflow: 'hidden' }}>
-                <div style={{ width: `${Math.min(100, (hostel.loot / 25000) * 100)}%`, height: '100%', background: 'linear-gradient(90deg, #f1c40f, #e67e22)' }} />
-              </div>
+
+              <button
+                className="btn btn-danger"
+                style={{ marginTop: 'auto', width: '100%', padding: '0.5rem 1rem' }}
+                onClick={() => handleRaid(hostel)}
+              >
+                💣 Raid This Galleon (-500)
+              </button>
             </div>
-
-            <button 
-              className="btn btn-danger" 
-              style={{ marginTop: 'auto', width: '100%', padding: '0.5rem 1rem' }}
-              onClick={() => handleRaid(hostel)}
-            >
-              💣 Raid This Galleon (-500)
-            </button>
-          </div>
           );
         })}
       </div>

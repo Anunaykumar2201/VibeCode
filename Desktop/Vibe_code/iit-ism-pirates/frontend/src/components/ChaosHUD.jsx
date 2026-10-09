@@ -32,9 +32,9 @@ export default function ChaosHUD() {
         </div>
 
         <div className="chaos-bar-track">
-          <div 
-            className="chaos-bar-fill" 
-            style={{ width: `${chaos}%`, background: barGradient }} 
+          <div
+            className="chaos-bar-fill"
+            style={{ width: `${chaos}%`, background: barGradient }}
           />
         </div>
 
