@@ -13,7 +13,7 @@ export default function Navbar({ onOpenRealInfo }) {
   const { user, logout } = useAuth();
 
   return (
-    <>
+    <header className="pirate-header-wrapper">
       {/* Top Proclamation Marquee */}
       <div className="pirate-banner">
         <span className="banner-icon">⚓</span>
@@ -23,8 +23,8 @@ export default function Navbar({ onOpenRealInfo }) {
         <span className="banner-icon">🏴‍☠️</span>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="pirate-navbar">
+      {/* Row 1: Brand & Admiralty Controls */}
+      <div className="pirate-brand-row">
         <NavLink to="/" className="nav-brand" onClick={() => setMobileOpen(false)}>
           <span className="nav-logo-icon">☠️</span>
           <div className="nav-logo-text">
@@ -33,14 +33,32 @@ export default function Navbar({ onOpenRealInfo }) {
           </div>
         </NavLink>
 
-        <button 
-          className="nav-menu-toggle" 
-          onClick={() => setMobileOpen(prev => !prev)}
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
+        <div className="nav-actions">
+          <button className="nav-btn real-info-btn" onClick={onOpenRealInfo} title="View Clean Official Campus Info">
+            📋 <span className="nav-btn-text">Real Info</span>
+          </button>
+          <button className="nav-btn sound-btn" onClick={toggleMute} title="Toggle Audio">
+            {isMuted ? '🔇' : '🔊'} <span className="nav-btn-text">{isMuted ? 'Muted' : 'Sound'}</span>
+          </button>
+          <button 
+            className="nav-btn danger-btn" 
+            onClick={() => addChaos(20)}
+            title="Warning: Forbidden button!"
+          >
+            💣 <span className="nav-btn-text">+20 Chaos</span>
+          </button>
+          <button 
+            className="nav-menu-toggle" 
+            onClick={() => setMobileOpen(prev => !prev)}
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
 
+      {/* Row 2: Full-Width Navigation Bar */}
+      <nav className="pirate-navbar-row">
         <ul className={`nav-links ${mobileOpen ? 'nav-open' : ''}`}>
           <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''} onClick={() => setMobileOpen(false)}>🗺️ Map</NavLink></li>
           <li><NavLink to="/hostels" className={({ isActive }) => isActive ? 'active' : ''} onClick={() => setMobileOpen(false)}>⚔️ Hostel Wars</NavLink></li>
@@ -53,9 +71,9 @@ export default function Navbar({ onOpenRealInfo }) {
             <li><NavLink to="/secret" className="unlocked-secret-link" onClick={() => setMobileOpen(false)}>🗝️ Secret</NavLink></li>
           )}
           
-          {/* Auth State: Board the Ship or Logged-in Captain Name */}
+          {/* Auth State in Row 2 */}
           {!user ? (
-            <li>
+            <li className="nav-auth-item">
               <NavLink to="/login" className={({ isActive }) => isActive ? 'active board-ship-link' : 'board-ship-link'} onClick={() => setMobileOpen(false)}>
                 ⚓ Board the Ship
               </NavLink>
@@ -79,23 +97,7 @@ export default function Navbar({ onOpenRealInfo }) {
             </li>
           )}
         </ul>
-
-        <div className="nav-actions">
-          <button className="nav-btn real-info-btn" onClick={onOpenRealInfo} title="View Clean Official Campus Info">
-            📋 <span className="nav-btn-text">Real Info</span>
-          </button>
-          <button className="nav-btn sound-btn" onClick={toggleMute} title="Toggle Audio">
-            {isMuted ? '🔇' : '🔊'} <span className="nav-btn-text">{isMuted ? 'Muted' : 'Sound'}</span>
-          </button>
-          <button 
-            className="nav-btn danger-btn" 
-            onClick={() => addChaos(20)}
-            title="Warning: Forbidden button!"
-          >
-            💣 <span className="nav-btn-text">+20 Chaos</span>
-          </button>
-        </div>
       </nav>
-    </>
+    </header>
   );
 }
