@@ -465,29 +465,49 @@ export default function Home() {
               <p>Click any pin on The Isle of IIT (ISM) to inspect its campus details!</p>
             </div>
           )}
+        </div>
+      </div>
 
-          {/* Active Proclamations Widget */}
-          <div className="notice-board-widget">
-            <h3>📜 Active Proclamations</h3>
-            {NOTICES.slice(0, 3).map(n => (
-              <div key={n.id} className="notice-item">
-                <span className="notice-badge">{n.badge}</span>
-                <strong style={{ display: 'block', margin: '4px 0 2px', color: 'var(--bg-parchment)', fontSize: '0.88rem' }}>
-                  {n.title}
-                </strong>
-                <p style={{ fontSize: '0.82rem', color: 'var(--bg-parchment-dark)', margin: 0 }}>
-                  {n.pirateText}
-                </p>
+      {/* ========================================================================= */}
+      {/* ACTIVE PROCLAMATIONS SECTION (Positioned Below Map & Above Campus Life) */}
+      {/* ========================================================================= */}
+      <section className="home-dashboard-section home-proclamations-section">
+        <div className="proclamations-board-wrapper">
+          <div className="proclamations-board-header">
+            <div className="proclamations-title-wrap">
+              <h2 className="proclamations-main-title">
+                <span className="proclamation-scroll-icon">📜</span> Active Proclamations
+              </h2>
+              <div className="proclamations-header-line"></div>
+            </div>
+            <span className="proclamations-subtitle-tag">
+              ⚡ Institute Daily Dispatches &amp; Admiralty Decrees
+            </span>
+          </div>
+
+          <div className="proclamations-items-grid">
+            {NOTICES.map((n) => (
+              <div key={n.id} className="proclamation-card-item">
+                <div className="proclamation-top-row">
+                  <span className="proclamation-alert-badge">{n.badge}</span>
+                  <span className="proclamation-date-stamp">{n.date}</span>
+                </div>
+                <h3 className="proclamation-item-title">{n.title}</h3>
+                <p className="proclamation-pirate-text">{n.pirateText}</p>
+                <div className="proclamation-real-note">
+                  <span className="real-note-label">🏛️ Official Notice:</span> {n.realText}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ========================================================================= */}
       {/* 1. CAMPUS LIFE SECTION (Matches Official IIT ISM Showcase) */}
       {/* ========================================================================= */}
       <section className="home-dashboard-section home-campus-life-section">
+
         <div className="section-header-banner">
           <div className="section-title-wrap">
             <div className="section-title-with-line">

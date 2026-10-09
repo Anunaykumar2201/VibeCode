@@ -865,7 +865,7 @@ body.rum-spill-active {
 .realistic-pirate-canvas {
   width: 100%;
   height: 640px;
-  background-image: 
+  background-image:
     linear-gradient(rgba(243, 235, 214, 0.25), rgba(222, 202, 160, 0.4)),
     url('/treasure_map.jpg');
   background-size: cover;
@@ -1014,7 +1014,11 @@ body.rum-spill-active {
 }
 
 /* --- Login & Crew Registration (Auth) --- */
-.login-page-container { max-width: 620px; margin: 0 auto; }
+.login-page-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
 .auth-card {
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1025,9 +1029,23 @@ body.rum-spill-active {
 }
 
 @keyframes card-shake {
-  0%, 100% { transform: translateX(0); }
-  15%, 45%, 75% { transform: translateX(-8px) rotate(-1deg); }
-  30%, 60%, 90% { transform: translateX(8px) rotate(1deg); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  15%,
+  45%,
+  75% {
+    transform: translateX(-8px) rotate(-1deg);
+  }
+
+  30%,
+  60%,
+  90% {
+    transform: translateX(8px) rotate(1deg);
+  }
 }
 
 .auth-tab-bar {
@@ -1181,8 +1199,15 @@ body.rum-spill-active {
   animation: slide-toast 0.3s ease;
 }
 
-.parrot-icon { font-size: 1.8rem; line-height: 1; }
-.parrot-text { font-size: 0.95rem; font-style: italic; }
+.parrot-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.parrot-text {
+  font-size: 0.95rem;
+  font-style: italic;
+}
 
 .auth-success-banner {
   text-align: center;
@@ -1256,8 +1281,13 @@ body.rum-spill-active {
 }
 
 @keyframes ship-rocking {
-  0% { transform: translate(-50%, -50%) rotate(-6deg); }
-  100% { transform: translate(-50%, -50%) rotate(6deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(-6deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(6deg);
+  }
 }
 
 .vintage-inspector {
@@ -1317,16 +1347,55 @@ body.rum-spill-active {
 
 /* Responsive Mobile */
 @media (max-width: 768px) {
-  .pirate-navbar { padding: 0.6rem 1.2rem; }
-  .nav-menu-toggle { display: block; }
-  .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.4rem; padding-top: 0.8rem; border-top: 1px dashed rgba(212, 175, 55, 0.3); }
-  .nav-links.nav-open { display: flex; }
-  .nav-links li a { width: 100%; text-align: center; }
-  .nav-user-item { flex-direction: column; width: 100%; }
-  .nav-user-item a, .nav-user-item button { width: 100%; text-align: center; }
-  .map-layout-grid { grid-template-columns: 1fr; }
-  h1 { font-size: 2.2rem; }
-  .container { padding: 1.5rem 1rem; }
+  .pirate-navbar {
+    padding: 0.6rem 1.2rem;
+  }
+
+  .nav-menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-user-item {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-user-item a,
+  .nav-user-item button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .map-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+  }
 }
 
 .notice-board-widget {
@@ -2301,8 +2370,15 @@ body.rum-spill-active {
 }
 
 @keyframes shipBob {
-  0%, 100% { transform: translate(-50%, -100%) rotate(-3deg); }
-  50% { transform: translate(-50%, -115%) rotate(4deg); }
+
+  0%,
+  100% {
+    transform: translate(-50%, -100%) rotate(-3deg);
+  }
+
+  50% {
+    transform: translate(-50%, -115%) rotate(4deg);
+  }
 }
 
 /* ==========================================================================
@@ -2484,8 +2560,15 @@ body.rum-spill-active {
 }
 
 @keyframes shipBobbing {
-  0%, 100% { transform: translate(-50%, -100%) rotate(-4deg); }
-  50% { transform: translate(-50%, -115%) rotate(5deg); }
+
+  0%,
+  100% {
+    transform: translate(-50%, -100%) rotate(-4deg);
+  }
+
+  50% {
+    transform: translate(-50%, -115%) rotate(5deg);
+  }
 }
 
 /* Gold-and-Red '✖' Flag Pins (Zero Emojis on Map Pins) */
@@ -2523,7 +2606,7 @@ body.rum-spill-active {
   color: #a81c1c;
   line-height: 1;
   font-weight: 900;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .isle-marker:hover,
@@ -2850,6 +2933,174 @@ body.rum-spill-active {
   position: relative;
 }
 
+/* ==========================================================================
+   Active Proclamations Notice Board Section
+   ========================================================================== */
+
+.home-proclamations-section {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: none;
+}
+
+.proclamations-board-wrapper {
+  background: linear-gradient(180deg, #23180c 0%, #170f07 100%);
+  border: 3px solid #8b6b3e;
+  border-radius: 18px;
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.proclamations-board-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.proclamations-board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #8b6b3e;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.proclamations-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.proclamations-main-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-glow);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.proclamation-scroll-icon {
+  font-size: 1.8rem;
+}
+
+.proclamations-header-line {
+  flex: 1;
+  max-width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37, transparent);
+}
+
+.proclamations-subtitle-tag {
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: rgba(13, 35, 58, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 4px 12px;
+  border-radius: 14px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+
+.proclamations-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.4rem;
+}
+
+.proclamation-card-item {
+  background: rgba(10, 6, 2, 0.6);
+  border: 1.5px solid rgba(139, 107, 62, 0.45);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.proclamation-card-item:hover {
+  border-color: var(--gold-glow);
+  background: rgba(22, 14, 5, 0.85);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.proclamation-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.proclamation-alert-badge {
+  display: inline-block;
+  background: #800000;
+  color: #ffffff;
+  font-family: var(--font-accent);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 2.5px 8.5px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 120, 120, 0.4);
+  box-shadow: 0 2px 6px rgba(128, 0, 0, 0.5);
+}
+
+.proclamation-date-stamp {
+  font-size: 0.78rem;
+  color: #a0825c;
+  font-family: var(--font-heading);
+}
+
+.proclamation-item-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1c40f;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+}
+
+.proclamation-pirate-text {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  color: #e9ddc3;
+  line-height: 1.45;
+  margin: 0 0 0.8rem 0;
+  flex: 1;
+}
+
+.proclamation-real-note {
+  border-top: 1px dashed rgba(139, 107, 62, 0.4);
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.real-note-label {
+  color: #00cec9;
+  font-weight: bold;
+}
+
+
 /* Section Header Banner with Official Typography & Orange Button */
 .section-header-banner {
   display: flex;
@@ -2934,11 +3185,11 @@ body.rum-spill-active {
 }
 
 .campus-life-card {
-  background: #fbf7ee;
+  background: linear-gradient(180deg, #18283b 0%, #0d1a29 100%);
   border: 2px solid #8b6b3e;
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -2946,7 +3197,7 @@ body.rum-spill-active {
 
 .campus-life-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.35);
   border-color: var(--gold-glow);
 }
 
@@ -2955,7 +3206,7 @@ body.rum-spill-active {
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background: #0d2137;
+  background: #071524;
 }
 
 .campus-life-img {
@@ -2973,7 +3224,7 @@ body.rum-spill-active {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(13, 35, 58, 0.85);
+  background: rgba(13, 35, 58, 0.9);
   color: var(--gold-glow);
   font-family: var(--font-heading);
   font-size: 0.85rem;
@@ -2994,9 +3245,10 @@ body.rum-spill-active {
 .campus-life-desc {
   font-family: var(--font-body);
   font-size: 0.96rem;
-  color: #2c1a0e;
-  line-height: 1.5;
+  color: #f1f5f9;
+  line-height: 1.55;
   margin: 0 0 1.2rem 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .official-read-more-btn {
@@ -3022,6 +3274,7 @@ body.rum-spill-active {
   transform: translateY(-2px);
   box-shadow: 0 5px 14px rgba(230, 126, 34, 0.55);
 }
+
 
 /* 2. ACADEMICS SECTION (Split Layout) */
 .academics-split-layout {
@@ -3194,11 +3447,11 @@ body.rum-spill-active {
 }
 
 .research-discovery-card {
-  background: #fbf7ee;
+  background: linear-gradient(180deg, #18283b 0%, #0d1a29 100%);
   border: 2px solid #8b6b3e;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -3208,7 +3461,7 @@ body.rum-spill-active {
 .research-discovery-card:hover {
   transform: translateY(-5px);
   border-color: var(--gold-glow);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75), 0 0 18px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.85), 0 0 18px rgba(212, 175, 55, 0.35);
 }
 
 .research-card-img-box {
@@ -3256,7 +3509,7 @@ body.rum-spill-active {
   font-family: 'Cinzel', serif;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #3b1e08;
+  color: var(--gold-glow);
   margin: 0 0 0.6rem 0;
   line-height: 1.25;
 }
@@ -3264,7 +3517,7 @@ body.rum-spill-active {
 .research-card-summary {
   font-family: var(--font-body);
   font-size: 0.88rem;
-  color: #44301d;
+  color: #e2e8f0;
   line-height: 1.45;
   margin: 0 0 0.9rem 0;
   display: -webkit-box;
@@ -3274,7 +3527,7 @@ body.rum-spill-active {
 }
 
 .research-card-footer {
-  border-top: 1px dashed rgba(139, 107, 62, 0.4);
+  border-top: 1px dashed rgba(212, 175, 55, 0.3);
   padding-top: 0.6rem;
   display: flex;
   flex-direction: column;
@@ -3283,7 +3536,7 @@ body.rum-spill-active {
 
 .research-lead-author {
   font-size: 0.78rem;
-  color: #795548;
+  color: #81ecec;
   font-weight: bold;
 }
 
@@ -3291,21 +3544,25 @@ body.rum-spill-active {
   font-family: var(--font-accent);
   font-size: 0.82rem;
   font-weight: bold;
-  color: #d35400;
+  color: #f39c12;
   align-self: flex-end;
 }
+
 
 /* Responsive Rules for the 3 Official Sections */
 @media (max-width: 1100px) {
   .campus-life-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .research-discoveries-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .academics-split-layout {
     grid-template-columns: 1fr;
   }
+
   .student-arch-wrapper {
     max-height: 320px;
     border-radius: 20px;
@@ -3316,22 +3573,26 @@ body.rum-spill-active {
   .campus-life-cards-grid {
     grid-template-columns: 1fr;
   }
+
   .research-discoveries-grid {
     grid-template-columns: 1fr;
   }
+
   .academic-program-row-card {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .program-row-img-box {
     width: 100%;
     height: 160px;
   }
+
   .program-row-arrow {
     display: none;
   }
+
   .official-section-title {
     font-size: 1.8rem;
   }
 }
-

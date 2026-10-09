@@ -35,7 +35,7 @@ export default function App() {
               <div className="app-root">
                 <Navbar onOpenRealInfo={() => setRealInfoOpen(true)} />
                 <ChaosHUD />
-                
+
                 <main>
                   <Routes>
                     <Route path="/" element={<Home />} />
